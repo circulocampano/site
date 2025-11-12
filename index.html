@@ -1,14 +1,189 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="generator" content="Hostinger Horizons" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hostinger Horizons</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Círculo Campano - Tenis de Mesa</title>
+  <style>
+    :root {
+      --verde: #009246;
+      --blanco: #ffffff;
+      --rojo: #ce2b37;
+      --gris: #f2f2f2;
+      --negro: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--gris);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--verde), var(--blanco), var(--rojo));
+      color: var(--negro);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    nav {
+      background: var(--negro);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--verde);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: var(--verde);
+      border-left: 6px solid var(--rojo);
+      padding-left: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .historia p, .titulos ul, .jugadores .grid {
+      font-size: 1rem;
+    }
+
+    .titulos ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    .jugadores .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .jugador {
+      background: var(--gris);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .jugador img {
+      width: 100%;
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      nav a {
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏓 Círculo Campano - Tenis de Mesa</h1>
+    <p>Pasión, historia y deporte desde nuestras raíces italianas</p>
+  </header>
+
+  <nav>
+    <a href="#historia">Historia</a>
+    <a href="#titulos">Títulos</a>
+    <a href="#jugadores">Jugadores</a>
+  </nav>
+
+  <main>
+    <section id="historia" class="historia">
+      <h2>Historia</h2>
+      <p>
+        El <strong>Círculo Campano</strong> nació en 1985 como un punto de encuentro para la comunidad italiana 
+        amante del deporte y la camaradería. Con el paso de los años, el club se consolidó como una de las 
+        instituciones más reconocidas en el <em>tenis de mesa</em> de la región, promoviendo la disciplina, 
+        el respeto y la competencia sana.
+      </p>
+    </section>
+
+    <section id="titulos" class="titulos">
+      <h2>Títulos</h2>
+      <ul>
+        <li>Campeonato Provincial 2002, 2006, 2012</li>
+        <li>Subcampeones Nacionales 2018</li>
+        <li>Torneo Interclubes 2020 y 2023</li>
+        <li>Mejor Club Formador 2024</li>
+      </ul>
+    </section>
+
+    <section id="jugadores" class="jugadores">
+      <h2>Jugadores Destacados</h2>
+      <div class="grid">
+        <div class="jugador">
+          <img src="https://via.placeholder.com/150" alt="Jugador 1">
+          <h3>Andrea Rossi</h3>
+          <p>Campeón provincial y referente del equipo desde 2015.</p>
+        </div>
+        <div class="jugador">
+          <img src="https://via.placeholder.com/150" alt="Jugador 2">
+          <h3>Lucía Bianchi</h3>
+          <p>Representante nacional y orgullo del club en torneos internacionales.</p>
+        </div>
+        <div class="jugador">
+          <img src="https://via.placeholder.com/150" alt="Jugador 3">
+          <h3>Giovanni Russo</h3>
+          <p>Entrenador principal y formador de nuevas generaciones.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Círculo Campano - Tenis de Mesa | Inspirados por Italia 🇮🇹
+  </footer>
+
+</body>
 </html>
