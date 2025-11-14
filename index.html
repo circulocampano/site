@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Círculo Campano - Tenis de Mesa</title>
+
   <style>
     :root {
       --verde: #009246;
       --blanco: #ffffff;
       --rojo: #ce2b37;
-      --gris: #f2f2f2;
-      --negro: #222;
+      --negro: #1a1a1a;
+      --gris: #f4f4f4;
+      --azul: #002b5c;
     }
 
     * {
@@ -20,24 +22,42 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--gris);
+      font-family: "Segoe UI", sans-serif;
+      background: var(--gris);
       color: var(--negro);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
       background: linear-gradient(to right, var(--verde), var(--blanco), var(--rojo));
-      color: var(--negro);
       text-align: center;
       padding: 2rem 1rem;
+      position: relative;
+    }
+
+    header img {
+      width: 140px;
+      animation: fadeIn 1s ease-in-out;
     }
 
     header h1 {
-      font-size: 2rem;
-      font-weight: bold;
+      margin-top: 15px;
+      font-size: 2.2rem;
+      animation: slideDown 1s ease-in-out;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* NAV */
     nav {
       background: var(--negro);
       display: flex;
@@ -47,91 +67,96 @@
 
     nav a {
       color: var(--blanco);
+      padding: 1rem 1.5rem;
       text-decoration: none;
-      padding: 1rem;
-      display: block;
-      transition: background 0.3s;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     nav a:hover {
       background: var(--verde);
+      transform: scale(1.1);
     }
 
+    /* MAIN */
     main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: var(--blanco);
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
 
     section {
+      background: var(--blanco);
+      padding: 2rem;
+      border-radius: 12px;
       margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1s;
     }
 
     h2 {
-      color: var(--verde);
-      border-left: 6px solid var(--rojo);
-      padding-left: 0.5rem;
+      border-left: 6px solid var(--verde);
+      padding-left: 10px;
       margin-bottom: 1rem;
+      font-size: 1.8rem;
     }
 
-    .historia p, .titulos ul, .jugadores .grid {
-      font-size: 1rem;
-    }
-
-    .titulos ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
-    }
-
-    .jugadores .grid {
+    /* JUGADORES */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
 
-    .jugador {
-      background: var(--gris);
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    .jugador-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: 0.4s;
+      transform: translateY(0);
     }
 
-    .jugador img {
+    .jugador-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    }
+
+    .jugador-card img {
       width: 100%;
-      max-width: 150px;
-      border-radius: 50%;
-      margin-bottom: 0.5rem;
+      height: 320px;
+      object-fit: cover;
     }
 
-    footer {
+    .jugador-card h3 {
+      padding: 1rem;
+      margin: 0;
       text-align: center;
       background: var(--negro);
       color: var(--blanco);
-      padding: 1rem;
-      font-size: 0.9rem;
+      font-size: 1.3rem;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-      nav a {
-        padding: 0.8rem;
-      }
+    footer {
+      background: var(--negro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
     }
+
   </style>
 </head>
+
 <body>
 
+  <!-- HEADER -->
   <header>
+    <img src="logo.jpg" alt="Logo del Círculo Campano">
     <h1>🏓 Círculo Campano - Tenis de Mesa</h1>
-    <p>Pasión, historia y deporte desde nuestras raíces italianas</p>
   </header>
 
+  <!-- NAV -->
   <nav>
     <a href="#historia">Historia</a>
     <a href="#titulos">Títulos</a>
@@ -139,46 +164,60 @@
   </nav>
 
   <main>
-    <section id="historia" class="historia">
+
+    <!-- HISTORIA -->
+    <section id="historia">
       <h2>Historia</h2>
       <p>
-        El <strong>Círculo Campano</strong> nació en 1985 como un punto de encuentro para la comunidad italiana 
-        amante del deporte y la camaradería. Con el paso de los años, el club se consolidó como una de las 
-        instituciones más reconocidas en el <em>tenis de mesa</em> de la región, promoviendo la disciplina, 
-        el respeto y la competencia sana.
+        El <strong>Círculo Campano</strong> es un club con raíces profundas en la cultura italiana,
+        fundado con el objetivo de promover el deporte, la unión y la competencia sana.
+        A lo largo de los años se ha convertido en una referencia del
+        <strong>tenis de mesa argentino</strong>, formando generaciones de jugadores y manteniendo vivo
+        el espíritu competitivo.
       </p>
     </section>
 
-    <section id="titulos" class="titulos">
+    <!-- TITULOS -->
+    <section id="titulos">
       <h2>Títulos</h2>
       <ul>
-        <li>Campeonato Provincial 2002, 2006, 2012</li>
+        <li>Campeones Provinciales: 2002, 2006, 2012</li>
         <li>Subcampeones Nacionales 2018</li>
-        <li>Torneo Interclubes 2020 y 2023</li>
-        <li>Mejor Club Formador 2024</li>
+        <li>Torneo Interclubes 2020, 2023</li>
+        <li>Premio al Mejor Club Formador 2024</li>
       </ul>
     </section>
 
-    <section id="jugadores" class="jugadores">
+    <!-- JUGADORES -->
+    <section id="jugadores">
       <h2>Jugadores Destacados</h2>
+
       <div class="grid">
-        <div class="jugador">
-          <img src="https://via.placeholder.com/150" alt="Jugador 1">
-          <h3>Andrea Rossi</h3>
-          <p>Campeón provincial y referente del equipo desde 2015.</p>
+
+        <div class="jugador-card">
+          <img src="mateo.jpg" alt="Jugador Mateo">
+          <h3>Mateo</h3>
         </div>
-        <div class="jugador">
-          <img src="https://via.placeholder.com/150" alt="Jugador 2">
-          <h3>Lucía Bianchi</h3>
-          <p>Representante nacional y orgullo del club en torneos internacionales.</p>
+
+        <div class="jugador-card">
+          <img src="dani.jpg" alt="Jugador Dani">
+          <h3>Dani</h3>
         </div>
-        <div class="jugador">
-          <img src="https://via.placeholder.com/150" alt="Jugador 3">
-          <h3>Giovanni Russo</h3>
-          <p>Entrenador principal y formador de nuevas generaciones.</p>
+
+        <div class="jugador-card">
+          <img src="facu.jpg" alt="Jugador Facu">
+          <h3>Facu</h3>
         </div>
+
+        <div class="jugador-card">
+          <img src="emi.jpg" alt="Jugador Emi">
+          <h3>Emi</h3>
+        </div>
+
       </div>
+
     </section>
+
   </main>
 
   <footer>
