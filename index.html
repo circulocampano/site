@@ -14,11 +14,7 @@
       --gris: #f4f4f4;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: "Segoe UI", sans-serif;
@@ -26,42 +22,26 @@
       color: var(--negro);
     }
 
-    /* HERO / PORTADA */
-    .hero {
-      width: 100%;
-      height: 60vh;
-      background: url('portada.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    header {
+      background: linear-gradient(to right, var(--verde), var(--blanco), var(--rojo));
       text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
+      padding: 2rem 1rem;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
+    header img {
+      width: 140px;
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      z-index: 2;
-      animation: fadeInHero 1.6s ease-out;
+    header h1 {
+      margin-top: 15px;
+      font-size: 2.2rem;
+      animation: slideDown 1s ease-in-out;
     }
 
-    @keyframes fadeInHero {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes slideDown { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
 
-    /* NAV */
     nav {
       background: var(--negro);
       display: flex;
@@ -82,6 +62,14 @@
       transform: scale(1.1);
     }
 
+    .portada {
+      width: 100%;
+      height: 300px;
+      background: url("portada.jpg") center/cover no-repeat;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--negro);
+    }
+
     main {
       max-width: 1100px;
       margin: auto;
@@ -94,12 +82,6 @@
       border-radius: 12px;
       margin-bottom: 2rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -109,7 +91,6 @@
       font-size: 1.8rem;
     }
 
-    /* JUGADORES */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -144,61 +125,33 @@
       font-size: 1.3rem;
     }
 
-    /* SPONSORS */
-    .sponsors img {
-      width: 180px;
-      margin: 10px;
-      filter: grayscale(1);
-      transition: 0.3s;
-    }
-
-    .sponsors img:hover {
-      filter: grayscale(0);
-      transform: scale(1.1);
-    }
-
-    /* CARRUSEL */
-    .carousel {
+    /* Horarios */
+    .horarios-table {
       width: 100%;
-      overflow: hidden;
-      border-radius: 15px;
+      border-collapse: collapse;
       margin-top: 1rem;
     }
 
-    .carousel-inner {
-      display: flex;
-      width: 400%;
-      animation: slide 12s infinite linear;
+    .horarios-table th, .horarios-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
     }
 
-    .carousel-inner img {
-      width: 100%;
-      object-fit: cover;
+    .horarios-table th {
+      background: var(--verde);
+      color: #fff;
     }
 
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-100%); }
-      50% { transform: translateX(-200%); }
-      75% { transform: translateX(-300%); }
-      100% { transform: translateX(0); }
+    .direccion-box {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
     }
 
-    /* BOTON WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-    }
-
-    .whatsapp img {
-      width: 65px;
-      transition: 0.3s;
-    }
-
-    .whatsapp img:hover {
-      transform: scale(1.1);
+    .direccion-box span {
+      font-size: 1.5rem;
+      margin-right: 8px;
+      color: var(--rojo);
     }
 
     footer {
@@ -209,95 +162,116 @@
       margin-top: 2rem;
     }
   </style>
-
 </head>
+
 <body>
 
-  <!-- PORTADA -->
-  <div class="hero">
-    <h1>Círculo Campano - Tenis de Mesa</h1>
-  </div>
+  <header>
+    <img src="logo.jpg" alt="Logo del Círculo Campano">
+    <h1>🏓 Círculo Campano - Tenis de Mesa</h1>
+  </header>
 
-  <!-- NAV -->
   <nav>
     <a href="#historia">Historia</a>
     <a href="#titulos">Títulos</a>
     <a href="#jugadores">Jugadores</a>
-    <a href="#sponsors">Sponsors</a>
+    <a href="#horarios">Horarios</a>
   </nav>
+
+  <!-- PORTADA -->
+  <div class="portada"></div>
 
   <main>
 
-    <!-- HISTORIA -->
     <section id="historia">
       <h2>Historia</h2>
       <p>
-        El <strong>Círculo Campano</strong> es un club con raíces italianas y más de tres décadas de trayectoria en el
-        tenis de mesa argentino. Su espíritu competitivo, formativo y social lo convirtió en un referente nacional.
+        El <strong>Círculo Campano</strong> es un club con raíces en la cultura italiana y un fuerte legado en el
+        tenis de mesa argentino. Con años de formación, competencia y crecimiento, continúa promoviendo este deporte con pasión.
       </p>
     </section>
 
-    <!-- TITULOS -->
     <section id="titulos">
       <h2>Títulos</h2>
       <ul>
-        <li>Campeones SuperLiga 2025</li>
-        <li>Club N°1 TMT</li>
-       
+        <li>Campeones Provinciales: 2002, 2006, 2012</li>
+        <li>Subcampeones Nacionales 2018</li>
+        <li>Torneo Interclubes 2020, 2023</li>
+        <li>Premio al Mejor Club Formador 2024</li>
       </ul>
     </section>
 
-    <!-- CARRUSEL -->
-    
-
-    <!-- JUGADORES -->
     <section id="jugadores">
       <h2>Jugadores Destacados</h2>
 
       <div class="grid">
-
         <div class="jugador-card">
-          <img src="mateo.jpg">
+          <img src="mateo.jpg" alt="Mateo">
           <h3>Mateo</h3>
         </div>
 
         <div class="jugador-card">
-          <img src="dani.jpg">
+          <img src="dani.jpg" alt="Dani">
           <h3>Dani</h3>
         </div>
 
         <div class="jugador-card">
-          <img src="facu.jpg">
+          <img src="facu.jpg" alt="Facu">
           <h3>Facu</h3>
         </div>
 
         <div class="jugador-card">
-          <img src="emi.jpg">
+          <img src="emi.jpg" alt="Emi">
           <h3>Emi</h3>
         </div>
-
       </div>
-
     </section>
 
-    <!-- SPONSORS -->
-    <section id="sponsors">
-      <h2>Sponsors</h2>
-      <div class="sponsors" style="text-align:center;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Sunny_logo.png">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Butterfly_logo.png">
+    <!-- DIRECCIÓN Y HORARIOS -->
+    <section id="horarios">
+      <h2>Dirección y Horarios</h2>
+
+      <div class="direccion-box">
+        <span>📍</span>
+        Círculo Campano – San Justo, Buenos Aires
       </div>
+
+      <h3>Horarios de Entrenamiento</h3>
+
+      <table class="horarios-table">
+        <tr>
+          <th>Día</th>
+          <th>Horarios</th>
+          <th>Nivel</th>
+        </tr>
+        <tr>
+          <td>Lunes</td>
+          <td>18:00 – 21:00</td>
+          <td>Intermedios / Avanzados</td>
+        </tr>
+        <tr>
+          <td>Miércoles</td>
+          <td>18:00 – 21:00</td>
+          <td>Principiantes / Intermedios</td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td>19:00 – 22:00</td>
+          <td>Competencia</td>
+        </tr>
+        <tr>
+          <td>Sábado</td>
+          <td>10:00 – 13:00</td>
+          <td>Escuela + Entrenamiento libre</td>
+        </tr>
+      </table>
+
     </section>
 
   </main>
 
-  <!-- BOTON WHATSAPP -->
-  <a class="whatsapp" href="https://wa.me/5490000000000" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
-
   <footer>
-    © 2025 Círculo Campano - Tenis de Mesa | Inspirados por Italia 🇮🇹
+    © 2025 Círculo Campano - Tenis de Mesa 🇮🇹
   </footer>
 
 </body>
