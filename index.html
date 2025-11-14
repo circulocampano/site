@@ -12,7 +12,6 @@
       --rojo: #ce2b37;
       --negro: #1a1a1a;
       --gris: #f4f4f4;
-      --azul: #002b5c;
     }
 
     * {
@@ -25,35 +24,40 @@
       font-family: "Segoe UI", sans-serif;
       background: var(--gris);
       color: var(--negro);
-      overflow-x: hidden;
     }
 
-    /* HEADER */
-    header {
-      background: linear-gradient(to right, var(--verde), var(--blanco), var(--rojo));
+    /* HERO / PORTADA */
+    .hero {
+      width: 100%;
+      height: 60vh;
+      background: url('portada.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 2rem 1rem;
+      color: white;
       position: relative;
+      overflow: hidden;
     }
 
-    header img {
-      width: 140px;
-      animation: fadeIn 1s ease-in-out;
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
     }
 
-    header h1 {
-      margin-top: 15px;
-      font-size: 2.2rem;
-      animation: slideDown 1s ease-in-out;
+    .hero h1 {
+      font-size: 3rem;
+      z-index: 2;
+      animation: fadeInHero 1.6s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -78,7 +82,6 @@
       transform: scale(1.1);
     }
 
-    /* MAIN */
     main {
       max-width: 1100px;
       margin: auto;
@@ -91,7 +94,12 @@
       border-radius: 12px;
       margin-bottom: 2rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      animation: fadeIn 1s;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -114,7 +122,6 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       transition: 0.4s;
-      transform: translateY(0);
     }
 
     .jugador-card:hover {
@@ -137,6 +144,63 @@
       font-size: 1.3rem;
     }
 
+    /* SPONSORS */
+    .sponsors img {
+      width: 180px;
+      margin: 10px;
+      filter: grayscale(1);
+      transition: 0.3s;
+    }
+
+    .sponsors img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    /* CARRUSEL */
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+
+    .carousel-inner {
+      display: flex;
+      width: 400%;
+      animation: slide 12s infinite linear;
+    }
+
+    .carousel-inner img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-100%); }
+      50% { transform: translateX(-200%); }
+      75% { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* BOTON WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .whatsapp img {
+      width: 65px;
+      transition: 0.3s;
+    }
+
+    .whatsapp img:hover {
+      transform: scale(1.1);
+    }
+
     footer {
       background: var(--negro);
       color: var(--blanco);
@@ -144,23 +208,22 @@
       padding: 1.5rem;
       margin-top: 2rem;
     }
-
   </style>
-</head>
 
+</head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="logo.jpg" alt="Logo del Círculo Campano">
-    <h1>🏓 Círculo Campano - Tenis de Mesa</h1>
-  </header>
+  <!-- PORTADA -->
+  <div class="hero">
+    <h1>Círculo Campano - Tenis de Mesa</h1>
+  </div>
 
   <!-- NAV -->
   <nav>
     <a href="#historia">Historia</a>
     <a href="#titulos">Títulos</a>
     <a href="#jugadores">Jugadores</a>
+    <a href="#sponsors">Sponsors</a>
   </nav>
 
   <main>
@@ -169,11 +232,8 @@
     <section id="historia">
       <h2>Historia</h2>
       <p>
-        El <strong>Círculo Campano</strong> es un club con raíces profundas en la cultura italiana,
-        fundado con el objetivo de promover el deporte, la unión y la competencia sana.
-        A lo largo de los años se ha convertido en una referencia del
-        <strong>tenis de mesa argentino</strong>, formando generaciones de jugadores y manteniendo vivo
-        el espíritu competitivo.
+        El <strong>Círculo Campano</strong> es un club con raíces italianas y más de tres décadas de trayectoria en el
+        tenis de mesa argentino. Su espíritu competitivo, formativo y social lo convirtió en un referente nacional.
       </p>
     </section>
 
@@ -181,11 +241,23 @@
     <section id="titulos">
       <h2>Títulos</h2>
       <ul>
-        <li>Campeones Provinciales: 2002, 2006, 2012</li>
-        <li>Subcampeones Nacionales 2018</li>
-        <li>Torneo Interclubes 2020, 2023</li>
-        <li>Premio al Mejor Club Formador 2024</li>
+        <li>Campeones SuperLiga 2025</li>
+        <li>Club N°1 TMT</li>
+       
       </ul>
+    </section>
+
+    <!-- CARRUSEL -->
+    <section id="galeria">
+      <h2>Galería</h2>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <img src="mateo.jpg">
+          <img src="dani.jpg">
+          <img src="facu.jpg">
+          <img src="emi.jpg">
+        </div>
+      </div>
     </section>
 
     <!-- JUGADORES -->
@@ -195,34 +267,9 @@
       <div class="grid">
 
         <div class="jugador-card">
-          <img src="mateo.jpg" alt="Jugador Mateo">
+          <img src="mateo.jpg">
           <h3>Mateo</h3>
         </div>
 
         <div class="jugador-card">
-          <img src="dani.jpg" alt="Jugador Dani">
-          <h3>Dani</h3>
-        </div>
-
-        <div class="jugador-card">
-          <img src="facu.jpg" alt="Jugador Facu">
-          <h3>Facu</h3>
-        </div>
-
-        <div class="jugador-card">
-          <img src="emi.jpg" alt="Jugador Emi">
-          <h3>Emi</h3>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-    © 2025 Círculo Campano - Tenis de Mesa | Inspirados por Italia 🇮🇹
-  </footer>
-
-</body>
-</html>
+          <
